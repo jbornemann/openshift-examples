@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Job
+metadata:
+  name: example-job2
+spec:
+  selector:
+    matchLabels:
+      app: example-job
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      name: example-job
+      labels:
+        app: example-job
+    spec:
+      containers:
+      - name: centos
+        image: centos
+        command: ["2echo",  "Hello World!"]
+      restartPolicy: Never

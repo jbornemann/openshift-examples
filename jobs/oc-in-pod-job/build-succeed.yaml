@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Job
+metadata:
+  name: example-job2
+spec:
+  selector:
+    matchLabels:
+      app: example-job
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      name: example-job
+      labels:
+        app: example-job
+    spec:
+      serviceAccountName: weather-on-shift-sa
+      containers:
+      - name: oc-base
+        image: bornemannjs/oc-base:1.5
+        command: ["oc",  "get", "pods"]
+      restartPolicy: Never

@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: new-job
+  annotations: 
+    openshift.io/display-name: "Hello World Job"
+    description: "Create a new Hello World job!"
+parameters:
+- name: JOB_NUMBER
+  generate: expression
+  from: "[0-9]{12}"
+objects:
+- apiVersion: batch/v1
+  kind: Job
+  metadata:
+    labels:
+      app: hello-world-job
+    name: "hello-world-job-${JOB_NUMBER}"
+  spec:
+    completions: 1
+    parallelism: 1
+    template:
+      metadata:
+        labels:
+          app: hello-world-job
+        name: hello-world-job
+      spec:
+        containers:
+        - command:
+          - echo
+          - Hello World!
+          image: centos
+          imagePullPolicy: Always
+          name: centos
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+        dnsPolicy: ClusterFirst
+        restartPolicy: Never
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:

@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: hello-world-statefulset
+  release: 'v1.0'
+spec:
+  serviceName: "hello-world-service"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello-world-statefulset
+        release: 'v1.0'
+    spec:
+      terminationGracePeriodSeconds: 0
+      volumes:
+      containers:
+      - name: busybox
+        readinessProbe:
+          exec:
+            command:
+              - "echo"
+          initialDelaySeconds: 5
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        image: busybox
+        command:
+          - 'sleep'
+        args:
+          - '3600'
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 25Gi

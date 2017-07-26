@@ -1,0 +1,16 @@
+apiVersion: batch/v2alpha1
+kind: ScheduledJob
+metadata:
+  name: example-job
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: weather-on-shift-sa
+          containers:
+          - name: oc-base
+            image: bornemannjs/oc-base:1.5
+            command: ["oc",  "start-build", "weather-on-shift"]
+          restartPolicy: Never

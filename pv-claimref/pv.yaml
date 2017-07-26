@@ -1,0 +1,90 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      volume: pv0001
+    name: pv0001
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 50Gi
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0001
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      volume: pv0002
+    name: pv0002
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 50Gi
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0002
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      volume: special0003
+    name: special0003
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 50Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: data-hello-world-statefulset-0
+      namespace: gaurav
+      resourceVersion: "2082"
+      uid: 6542eab8-5b5d-11e7-9b82-dad356869dd3
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0003
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      volume: special0004
+    name: special0004
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 50Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: data-hello-world-statefulset-1
+      namespace: gaurav
+      resourceVersion: "2085"
+      uid: 65453d14-5b5d-11e7-9b82-dad356869dd3
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0004
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+kind: List
+metadata: {}

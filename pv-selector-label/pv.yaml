@@ -1,0 +1,76 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      volume: pv0001
+    name: pv0001
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 5Gi
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0001
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      gauravonly: "true"
+    name: pv0002
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 5Gi
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0002
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      gauravonly: "true"
+    name: pv0003
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 50Gi
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0003
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    creationTimestamp: null
+    labels:
+      gauravonly: "true"
+    name: pv0004
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+    - ReadOnlyMany
+    capacity:
+      storage: 50Gi
+    hostPath:
+      path: /Users/jbornema/openshift-local-data/pv/pv0004
+    persistentVolumeReclaimPolicy: Recycle
+  status: {}
+kind: List
+metadata: {}
